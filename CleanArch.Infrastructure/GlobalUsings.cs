@@ -1,6 +1,1 @@
-﻿namespace CleanArch.Infrastructure
-{
-    public class GlobalUsings
-    {
-    }
-}
+﻿global using CleanArch.Core.Entities.Person;
