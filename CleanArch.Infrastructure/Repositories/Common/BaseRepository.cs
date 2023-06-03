@@ -1,7 +1,5 @@
 ﻿using System.Linq.Expressions;
 using CleanArch.Core.Entities.Common.Enums;
-using CleanArch.Infrastructure.Data;
-using CleanArch.Infrastructure.IRepositories.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArch.Infrastructure.Repositories.Common
