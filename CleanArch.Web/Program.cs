@@ -1,4 +1,5 @@
 using CleanArch.Infrastructure.Data;
+using CleanArch.IoC.DependenciesContainers;
 using Microsoft.EntityFrameworkCore;
 
 #region Services
@@ -14,6 +15,12 @@ services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         configuration.GetConnectionString(
             StaticDataStore.SqlServerConnectionStringName)));
+
+#endregion
+
+#region Dependency injection
+
+services.AddApplicationDependencies();
 
 #endregion
 
