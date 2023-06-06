@@ -1,3 +1,4 @@
+using CleanArch.Application.MapperProfiles;
 using CleanArch.Infrastructure.Data;
 using CleanArch.IoC.DependenciesContainers;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,12 @@ services.AddDbContext<ApplicationDbContext>(options =>
 #region Dependency injection
 
 services.AddApplicationDependencies();
+
+#endregion
+
+#region Auto mapper
+
+services.AddAutoMapper(typeof(ApplicationMapperProfile));
 
 #endregion
 
