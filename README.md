@@ -13,33 +13,32 @@ The project is structured as follows:
 CleanArch/
 ├── .gitignore
 ├── CleanArch.sln
-├── CleanArch.Application/
-│ ├── Interfaces/
-│ │ ├── IProductService.cs
-│ ├── Services/
-│ │ ├── ProductService.cs
-│ ├── CleanArch.Application.csproj
-├── CleanArch.Common/
-│ ├── CleanArch.Common.csproj
-├── CleanArch.Core/
-│ ├── Entities/
-│ │ ├── Product.cs
-│ ├── CleanArch.Core.csproj
+├── CleanArch/
+│   ├── CleanArch.csproj
+│   ├── Program.cs
+├── CleanArch.Domain/
+│   ├── Entities/
+│   │   ├── Product.cs
+│   ├── Interfaces/
+│   │   ├── IRepository.cs
+│   ├── Services/
+│   │   ├── ProductService.cs
+│   ├── CleanArch.Domain.csproj
 ├── CleanArch.Infrastructure/
-│ ├── Data/
-│ │ ├── Context/
-│ │ │ ├── AppDbContext.cs
-│ │ ├── Repositories/
-│ │ │ ├── Repository.cs
-│ ├── CleanArch.Infrastructure.csproj
-├── CleanArch.IoC/
-│ ├── DependencyInjection/
-│ │ ├── DependencyInjectionExtensions.cs
-│ ├── CleanArch.IoC.csproj
-├── CleanArch.Web/
-│ ├── Controllers/
-│ │ ├── ProductController.cs
-│ ├── CleanArch.Web.csproj
+│   ├── Data/
+│   │   ├── Context/
+│   │   │   ├── AppDbContext.cs
+│   │   ├── Repositories/
+│   │   │   ├── Repository.cs
+│   ├── CleanArch.Infrastructure.csproj
+├── CleanArch.Application/
+│   ├── Interfaces/
+│   │   ├── IProductService.cs
+│   ├── CleanArch.Application.csproj
+├── CleanArch.WebApi/
+│   ├── Controllers/
+│   │   ├── ProductController.cs
+│   ├── CleanArch.WebApi.csproj
 └── README.md
 
 The project consists of five projects: `CleanArch.Application`, `CleanArch.Common`, `CleanArch.Core`, `CleanArch.Infrastructure`, and `CleanArch.Web`. The file structure is shown above.
