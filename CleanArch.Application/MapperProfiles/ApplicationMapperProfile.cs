@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using CleanArch.Application.DTOs.People;
+using CleanArch.Core.Entities.Person;
 
 namespace CleanArch.Application.MapperProfiles
 {
@@ -8,7 +9,11 @@ namespace CleanArch.Application.MapperProfiles
 
         public ApplicationMapperProfile()
         {
-            
+            #region People
+
+            CreateMap<Person, PersonDTO>().ReverseMap();
+
+            #endregion
         }
 
         #endregion
