@@ -1,4 +1,5 @@
-﻿using CleanArch.Application.IServices;
+﻿using CleanArch.Application.DTOs.People;
+using CleanArch.Application.IServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArch.Web.Controllers
@@ -36,6 +37,30 @@ namespace CleanArch.Web.Controllers
             }
 
             return View(result.Data);
+        }
+
+        #endregion
+
+        #region Create person
+
+        [HttpGet]
+        public IActionResult Create() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreatePersonDTO model)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            var result = await _peopleService.CreatePersonAsync(model);
+
+            if (!result.Succeeded)
+            {
+                _logger.LogError(result.Message, result.Type, result.Time);
+                return StatusCode(500);
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         #endregion

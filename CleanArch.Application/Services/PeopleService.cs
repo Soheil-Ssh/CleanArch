@@ -1,5 +1,6 @@
 ﻿using CleanArch.Application.DTOs.People;
 using CleanArch.Application.IServices;
+using CleanArch.Core.Entities.Person;
 
 namespace CleanArch.Application.Services
 {
@@ -23,6 +24,21 @@ namespace CleanArch.Application.Services
 
         public async Task<Result<IEnumerable<PersonDTO>>> GetAllPeopleAsync()
             => await Task.FromResult(await _uow.PeopleRepository.GetAllAsync(selector: p => _mapper.Map<PersonDTO>(p)));
+
+        #endregion
+
+        #region Create person
+
+        public async Task<Result<Guid>> CreatePersonAsync(CreatePersonDTO createPersonDto)
+        {
+            var result = await _uow.PeopleRepository
+                .AddAsync(_mapper.Map<Person>(createPersonDto));
+
+            if (result.Succeeded)
+                await _uow.SaveAsync();
+
+            return await Task.FromResult(result);
+        }
 
         #endregion
 

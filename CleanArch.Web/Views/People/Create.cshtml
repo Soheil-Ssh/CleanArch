@@ -1,0 +1,48 @@
+﻿@model CreatePersonDTO
+
+@{
+    ViewData["Title"] = "Create Person";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xxl-6">
+        <h2 class="text-center mb-3">Create Person</h2>
+        <form asp-action="Create" asp-controller="People" asp-antiforgery="true" method="post">
+            <div class="mb-3">
+                <label asp-for="FirstName" class="form-label"></label>
+                <input asp-for="FirstName" type="text" class="form-control">
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="LastName" class="form-label"></label>
+                <input asp-for="LastName" type="text" class="form-control">
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" type="email" class="form-control">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="PhoneNumber" class="form-label"></label>
+                <input asp-for="PhoneNumber" type="tel" class="form-control">
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Age" class="form-label"></label>
+                <input asp-for="Age" type="number" class="form-control">
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Jub" class="form-label"></label>
+                <input asp-for="Jub" type="text" class="form-control">
+                <span asp-validation-for="Jub" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

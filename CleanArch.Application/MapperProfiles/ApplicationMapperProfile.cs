@@ -12,6 +12,7 @@ namespace CleanArch.Application.MapperProfiles
             #region People
 
             CreateMap<Person, PersonDTO>().ReverseMap();
+            CreateMap<Person, CreatePersonDTO>().ReverseMap();
 
             #endregion
         }
