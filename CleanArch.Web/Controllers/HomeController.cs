@@ -6,10 +6,7 @@ namespace CleanArch.Web.Controllers
     {
         #region Index
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
 
         #endregion
     }
