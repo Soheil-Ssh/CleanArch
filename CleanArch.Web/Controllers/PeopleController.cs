@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArch.Web.Controllers
 {
-    public class PeopleController : Controller
+    public class PeopleController : BaseController
     {
         #region Ctor
 
