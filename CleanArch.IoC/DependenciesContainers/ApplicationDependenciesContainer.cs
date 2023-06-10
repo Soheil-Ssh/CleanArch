@@ -1,4 +1,6 @@
-﻿using CleanArch.Infrastructure.IRepositories.Common;
+﻿using CleanArch.Application.IServices;
+using CleanArch.Application.Services;
+using CleanArch.Infrastructure.IRepositories.Common;
 using CleanArch.Infrastructure.Repositories.Common;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,7 +15,13 @@ namespace CleanArch.IoC.DependenciesContainers
             services.AddScoped<IUOW, UOW>();
 
             #endregion
-            
+
+            #region Services
+
+            services.AddScoped<IPeopleService, PeopleService>();
+
+            #endregion
+
             return services;
         }
     }
