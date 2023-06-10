@@ -1,4 +1,6 @@
-﻿
+﻿using CleanArch.Infrastructure.IRepositories.People;
+using CleanArch.Infrastructure.Repositories.People;
+
 namespace CleanArch.Infrastructure.Repositories.Common
 {
     public class UOW : IUOW
@@ -11,6 +13,15 @@ namespace CleanArch.Infrastructure.Repositories.Common
         {
             _context = context;
         }
+
+        #endregion
+
+        #region People reposiyory
+
+        private IPeopleRepository _peopleRepository;
+
+        public IPeopleRepository PeopleRepository =>
+            _peopleRepository ??= new PeopleRepository(_context);
 
         #endregion
 
