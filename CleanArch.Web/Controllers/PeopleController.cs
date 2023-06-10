@@ -21,7 +21,22 @@ namespace CleanArch.Web.Controllers
 
         #region Index
 
-        public IActionResult Index() => View();
+        public async Task<IActionResult> Index()
+        {
+            var result = await _peopleService.GetAllPeopleAsync();
+
+            if (!result.Succeeded)
+            {
+                _logger.LogError(result.Message, result.Type, result.Time);
+
+                if (result.Data == null)
+                    return NotFound();
+
+                return StatusCode(500);
+            }
+
+            return View(result.Data);
+        }
 
         #endregion
     }
