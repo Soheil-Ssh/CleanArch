@@ -7,5 +7,9 @@ namespace CleanArch.Application.IServices
         Task<Result<IEnumerable<PersonDTO>>> GetAllPeopleAsync();
 
         Task<Result<Guid>> CreatePersonAsync(CreatePersonDTO createPersonDto);
+
+        Task<Result<EditPersonDTO>> GetPersonByIdAsync(Guid id);
+
+        Task<Result<Guid>> EditPersonAsync(EditPersonDTO editPersonDto);
     }
 }

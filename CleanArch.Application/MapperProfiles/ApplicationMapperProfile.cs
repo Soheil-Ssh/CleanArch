@@ -13,6 +13,7 @@ namespace CleanArch.Application.MapperProfiles
 
             CreateMap<Person, PersonDTO>().ReverseMap();
             CreateMap<Person, CreatePersonDTO>().ReverseMap();
+            CreateMap<Person, EditPersonDTO>().ReverseMap();
 
             #endregion
         }

@@ -47,6 +47,7 @@ namespace CleanArch.Web.Controllers
         public IActionResult Create() => View();
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreatePersonDTO model)
         {
             if (!ModelState.IsValid)
@@ -61,6 +62,47 @@ namespace CleanArch.Web.Controllers
             }
 
             Alert(StaticDataStore.CreateSucceededMessage, NotificationType.Success);
+            return RedirectToAction(nameof(Index));
+        }
+
+        #endregion
+
+        #region Edit person
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var result = await _peopleService.GetPersonByIdAsync(id);
+
+            if (!result.Succeeded)
+            {
+                _logger.LogError(result.Message, result.Type, result.Time);
+
+                if (result.Data == null)
+                    return NotFound();
+
+                return StatusCode(500);
+            }
+
+            return View(result.Data);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EditPersonDTO model)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            var result = await _peopleService.EditPersonAsync(model);
+
+            if (!result.Succeeded)
+            {
+                _logger.LogError(result.Message, result.Type, result.Time);
+                return StatusCode(500);
+            }
+
+            Alert(StaticDataStore.EditSucceededMessage, NotificationType.Success);
             return RedirectToAction(nameof(Index));
         }
 

@@ -42,6 +42,29 @@ namespace CleanArch.Application.Services
 
         #endregion
 
+        #region Get person by id
+
+        public async Task<Result<EditPersonDTO>> GetPersonByIdAsync(Guid id)
+            => await Task.FromResult(await _uow.PeopleRepository.GetAsync(expression: p => p.Id == id,
+                selector: p => _mapper.Map<EditPersonDTO>(p)));
+
+        #endregion
+
+        #region Edit person
+
+        public async Task<Result<Guid>> EditPersonAsync(EditPersonDTO editPersonDto)
+        {
+            var result = _uow.PeopleRepository
+                .Update(_mapper.Map<Person>(editPersonDto));
+
+            if (result.Succeeded)
+                await _uow.SaveAsync();
+
+            return await Task.FromResult(result);
+        }
+
+        #endregion
+
         #region Dispose
 
         public async ValueTask DisposeAsync()
