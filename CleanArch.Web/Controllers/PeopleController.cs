@@ -60,6 +60,7 @@ namespace CleanArch.Web.Controllers
                 return StatusCode(500);
             }
 
+            Alert(StaticDataStore.CreateSucceededMessage, NotificationType.Success);
             return RedirectToAction(nameof(Index));
         }
 
