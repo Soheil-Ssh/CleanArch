@@ -11,5 +11,8 @@ namespace CleanArch.Application.IServices
         Task<Result<EditPersonDTO>> GetPersonByIdAsync(Guid id);
 
         Task<Result<Guid>> EditPersonAsync(EditPersonDTO editPersonDto);
+
+        Task<Result<DetailsPersonDTO>> GetPersonDetailsByIdAsync(Guid id);
+
     }
 }

@@ -65,6 +65,14 @@ namespace CleanArch.Application.Services
 
         #endregion
 
+        #region Get person details by id
+
+        public async Task<Result<DetailsPersonDTO>> GetPersonDetailsByIdAsync(Guid id)
+            => await Task.FromResult(await _uow.PeopleRepository.GetAsync(expression: p => p.Id == id,
+                selector: p => _mapper.Map<DetailsPersonDTO>(p)));
+
+        #endregion
+
         #region Dispose
 
         public async ValueTask DisposeAsync()

@@ -107,5 +107,27 @@ namespace CleanArch.Web.Controllers
         }
 
         #endregion
+
+        #region Detials
+
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var result = await _peopleService.GetPersonDetailsByIdAsync(id);
+
+            if (!result.Succeeded)
+            {
+                _logger.LogError(result.Message, result.Type, result.Time);
+
+                if (result.Data == null)
+                    return NotFound();
+
+                return StatusCode(500);
+            }
+
+            return View(result.Data);
+        }
+
+        #endregion
     }
 }
