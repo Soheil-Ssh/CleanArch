@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - CleanArch</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/toastr/build/toastr.min.css" />
+    @await RenderSectionAsync("Scripts", required: false)
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
