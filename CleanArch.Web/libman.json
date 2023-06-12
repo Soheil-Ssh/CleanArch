@@ -6,6 +6,11 @@
       "provider": "unpkg",
       "library": "toastr@2.1.4",
       "destination": "wwwroot/lib/toastr/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "sweetalert2@11.7.12",
+      "destination": "wwwroot/lib"
     }
   ]
 }
