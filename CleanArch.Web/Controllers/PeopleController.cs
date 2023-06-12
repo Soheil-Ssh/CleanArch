@@ -129,5 +129,29 @@ namespace CleanArch.Web.Controllers
         }
 
         #endregion
+
+        #region Delete
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var result = await _peopleService.DeletePersonByIdAsync(id);
+
+            if (!result.Succeeded)
+            {
+                _logger.LogError(result.Message, result.Type, result.Time);
+
+                if (result.Type == ResultType.NotFoundError)
+                {
+                    return Json(JsonHelper.MessageResult(JsonResultType.NotFoundError));
+                }
+
+                return Json(JsonHelper.MessageResult(JsonResultType.DeleteFailed));
+            }
+
+            return Json(JsonHelper.MessageResult(JsonResultType.DeleteSucceeded));
+        }
+
+        #endregion
     }
 }

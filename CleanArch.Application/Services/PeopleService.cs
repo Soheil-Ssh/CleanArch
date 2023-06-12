@@ -1,5 +1,6 @@
 ﻿using CleanArch.Application.DTOs.People;
 using CleanArch.Application.IServices;
+using CleanArch.Core.Entities.Common.Enums;
 using CleanArch.Core.Entities.Person;
 
 namespace CleanArch.Application.Services
@@ -70,6 +71,34 @@ namespace CleanArch.Application.Services
         public async Task<Result<DetailsPersonDTO>> GetPersonDetailsByIdAsync(Guid id)
             => await Task.FromResult(await _uow.PeopleRepository.GetAsync(expression: p => p.Id == id,
                 selector: p => _mapper.Map<DetailsPersonDTO>(p)));
+
+        #endregion
+
+        #region Delete person
+
+        public async Task<Result> DeletePersonByIdAsync(Guid id)
+        {
+            var result = new Result();
+
+            var getResult = await _uow.PeopleRepository.GetAsync(c => c.Id == id);
+            if (!getResult.Succeeded)
+            {
+                result.SetType(getResult.Type, getResult.Message);
+                return await Task.FromResult(result);
+            }
+
+            if (getResult.Data == null)
+            {
+                result.SetType(ResultType.NotFoundError, $"Person not found by id = {id}");
+                return await Task.FromResult(result);
+            }
+
+            result = _uow.PeopleRepository.Delete(getResult.Data);
+            if (result.Succeeded)
+                await _uow.SaveAsync();
+
+            return await Task.FromResult(result);
+        }
 
         #endregion
 

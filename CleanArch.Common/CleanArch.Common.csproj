@@ -6,4 +6,8 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CleanArch.Core\CleanArch.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -14,5 +14,7 @@ namespace CleanArch.Application.IServices
 
         Task<Result<DetailsPersonDTO>> GetPersonDetailsByIdAsync(Guid id);
 
+        Task<Result> DeletePersonByIdAsync(Guid id);
+
     }
 }
