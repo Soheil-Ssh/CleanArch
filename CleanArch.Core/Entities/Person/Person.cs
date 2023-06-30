@@ -27,6 +27,9 @@
         [MaxLength(200)]
         public string Jub { get; set; }
 
+        [MaxLength(50)]
+        public string ImageName { get; set; }
+
         #endregion
     }
 }
