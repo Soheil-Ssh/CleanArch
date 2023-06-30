@@ -8,6 +8,12 @@
 
         #endregion
 
+        #region Images
+
+        public const string NoPhotoImageName = "no-photo.png";
+
+        #endregion
+
         #region Messages
 
         public const string CreateSucceededMessage = "Added successfully.";
