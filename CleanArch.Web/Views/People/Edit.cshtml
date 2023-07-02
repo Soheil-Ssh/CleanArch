@@ -7,8 +7,9 @@
 <div class="row justify-content-center">
     <div class="col-lg-8 col-xxl-6">
         <h2 class="text-center mb-3">Edit Person</h2>
-        <form asp-action="Edit" asp-controller="People" asp-antiforgery="true" method="post">
+        <form asp-action="Edit" asp-controller="People" asp-antiforgery="true" method="post" enctype="multipart/form-data">
             <input asp-for="Id" type="hidden"/>
+            <input asp-for="ImageName" type="hidden"/>
             <input asp-for="CreateDate" type="hidden"/>
             <input asp-for="LastUpdateDate" type="hidden"/>
             <input asp-for="IsDelete" type="hidden"/>
@@ -42,7 +43,12 @@
                 <input asp-for="Jub" type="text" class="form-control">
                 <span asp-validation-for="Jub" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Eidt</button>
+            <div class="mb-3">
+                <label asp-for="Image" class="form-label"></label>
+                <input asp-for="Image" class="form-control" type="file" accept=".jpg, .jpeg, .png, .svg">
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Edit</button>
         </form>
     </div>
 </div>

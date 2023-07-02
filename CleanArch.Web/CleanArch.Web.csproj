@@ -25,4 +25,8 @@
     <ProjectReference Include="..\CleanArch.IoC\CleanArch.IoC.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\person\thumb\" />
+  </ItemGroup>
+
 </Project>

@@ -17,6 +17,8 @@
 
         public string Jub { get; set; }
 
+        public string ImageName { get; set; }
+
         public DateTime CreateDate { get; set; }
 
         public DateTime? LastUpdateDate { get; set; }

@@ -10,7 +10,10 @@
 
         #region Images
 
+        public const string ImageBasePath = "wwwroot/img/";
+
         public const string NoPhotoImageName = "no-photo.png";
+        public const string PersonImagePath = ImageBasePath + "person/";
 
         #endregion
 

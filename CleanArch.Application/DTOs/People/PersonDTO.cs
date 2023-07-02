@@ -10,6 +10,8 @@ namespace CleanArch.Application.DTOs.People
 
         public string Email { get; set; }
 
+        public string ImageName { get; set; }
+
         #endregion
     }
 }

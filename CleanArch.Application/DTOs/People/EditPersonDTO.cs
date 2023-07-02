@@ -1,4 +1,6 @@
-﻿namespace CleanArch.Application.DTOs.People
+﻿using Microsoft.AspNetCore.Http;
+
+namespace CleanArch.Application.DTOs.People
 {
     public class EditPersonDTO : BaseEntity
     {
@@ -29,6 +31,11 @@
 
         [MaxLength(200)]
         public string Jub { get; set; }
+
+        public string ImageName { get; set; }
+
+        [Display(Name = "Image")]
+        public IFormFile Image { get; set; }
 
         #endregion
     }

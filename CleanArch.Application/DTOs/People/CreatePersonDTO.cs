@@ -1,4 +1,4 @@
-﻿
+﻿using Microsoft.AspNetCore.Http;
 
 namespace CleanArch.Application.DTOs.People
 {
@@ -31,6 +31,9 @@ namespace CleanArch.Application.DTOs.People
 
         [MaxLength(200)]
         public string Jub { get; set; }
+
+        [Display(Name = "Image")]
+        public IFormFile Image { get; set; }
 
         #endregion
     }
