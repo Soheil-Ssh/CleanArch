@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="CleanArch.Api/CleanArch.Api.csproj" Id="efeb39bd-a946-47a7-9c36-6abc52731a47" />
+  <Project Path="CleanArch.Application/CleanArch.Application.csproj" Id="51c55a40-6b86-4d68-aba3-bc6778a74b45" />
+  <Project Path="CleanArch.Domain/CleanArch.Domain.csproj" Id="3ec36170-2bda-4b10-b696-b55b5b34e1e0" />
+  <Project Path="CleanArch.Infrastructure/CleanArch.Infrastructure.csproj" Id="b6d92cb9-e30e-4e06-a425-5a3ce9457b52" />
+  <Project Path="CleanArch.UnitTests/CleanArch.UnitTests.csproj" Id="d80493dc-676b-4335-a778-30e9a4d7ff52" />
+  <Project Path="CleanArch.Web/CleanArch.Web.csproj" Id="10940508-b844-4b66-97a2-1664c2ad1646" />
+</Solution>
