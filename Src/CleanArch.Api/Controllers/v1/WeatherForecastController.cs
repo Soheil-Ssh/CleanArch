@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace CleanArch.Api.Controllers
+namespace CleanArch.Api.Controllers.v1
 {
     [ApiController]
-    [Route("[controller]")]
+    [ApiVersion(1)]
+    [Route("api/v{v:apiVersion}/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries =
