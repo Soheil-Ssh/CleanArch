@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\Base\" />
+    <Folder Include="IRepositories\Common\" />
+    <Folder Include="Specifications\Common\" />
+    <Folder Include="Specifications\ToDo\" />
+  </ItemGroup>
+
 </Project>
