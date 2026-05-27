@@ -10,20 +10,20 @@ public abstract class BaseEntity<TKey>
     /// The primary key of the entity.
     /// </summary>
     [Key]
-    public TKey Id { get; init; } = default!;
+    public TKey Id { get; set; } = default!;
 
     /// <summary>
     /// The date and time when the entity was created.
     /// </summary>
-    public DateTime CreateDate { get; init; }
+    public DateTime CreateDate { get; set; }
 
     /// <summary>
     /// The date and time of the last update, or <c>null</c> if the entity has never been modified.
     /// </summary>
-    public DateTime? UpdateDate { get; init; }
+    public DateTime? UpdateDate { get; set; }
 
     /// <summary>
     /// Indicates whether the entity is soft-deleted.
     /// </summary>
-    public bool IsDeleted { get; init; }
+    public bool IsDeleted { get; set; }
 }
