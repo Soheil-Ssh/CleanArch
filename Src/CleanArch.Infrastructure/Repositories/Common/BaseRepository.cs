@@ -114,14 +114,13 @@ public class BaseRepository<TKey, TEntity> : IBaseRepository<TKey, TEntity> wher
         return await query.Select(selector).FirstOrDefaultAsync();
     }
 
-    public virtual async Task<TEntity> AddAsync(TEntity entity)
+    public virtual async Task AddAsync(TEntity entity)
     {
         entity.CreateDate = DateTime.UtcNow;
         await Db.AddAsync(entity);
-        return entity;
     }
 
-    public virtual async Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities)
+    public virtual async Task AddRangeAsync(IEnumerable<TEntity> entities)
     {
         // ReSharper disable once PossibleMultipleEnumeration
         var entityList = entities.ToList();
@@ -131,15 +130,12 @@ public class BaseRepository<TKey, TEntity> : IBaseRepository<TKey, TEntity> wher
             entity.CreateDate = now;
         }
         await Db.AddRangeAsync(entityList);
-        // ReSharper disable once PossibleMultipleEnumeration
-        return entities;
     }
 
-    public virtual TEntity Update(TEntity entity)
+    public virtual void Update(TEntity entity)
     {
         entity.UpdateDate = DateTime.UtcNow;
         Db.Update(entity);
-        return entity;
     }
 
     public virtual void Delete(TEntity entity)

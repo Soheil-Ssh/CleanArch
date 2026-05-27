@@ -93,22 +93,19 @@ public interface IBaseRepository<TKey, TEntity> where TEntity : BaseEntity<TKey>
     /// Asynchronously adds a new entity.
     /// </summary>
     /// <param name="entity">The entity to add.</param>
-    /// <returns>The primary key of the added entity.</returns>
-    Task<TEntity> AddAsync(TEntity entity);
+    Task AddAsync(TEntity entity);
 
     /// <summary>
     /// Asynchronously adds a range of entities.
     /// </summary>
     /// <param name="entities">The collection of entities to add.</param>
-    /// <returns>A collection of the primary keys of the added entities.</returns>
-    Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities);
+    Task AddRangeAsync(IEnumerable<TEntity> entities);
 
     /// <summary>
     /// Marks an existing entity as modified.
     /// </summary>
     /// <param name="entity">The entity with updated values.</param>
-    /// <returns>The primary key of the updated entity.</returns>
-    TEntity Update(TEntity entity);
+    void Update(TEntity entity);
 
     /// <summary>
     /// Marks an entity for soft deletion.
