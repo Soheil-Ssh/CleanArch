@@ -43,7 +43,7 @@ public class BaseRepository<TKey, TEntity> : IBaseRepository<TKey, TEntity> wher
         return query;
     }
 
-    public async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? expression = null,
+    public virtual async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? expression = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? order = null,
         params Expression<Func<TEntity, object>>[] includes)
     {
@@ -51,7 +51,7 @@ public class BaseRepository<TKey, TEntity> : IBaseRepository<TKey, TEntity> wher
         return await query.ToListAsync();
     }
 
-    public async Task<IEnumerable<TResult>> GetAllAsync<TResult>(Expression<Func<TEntity, TResult>> selector,
+    public virtual async Task<IEnumerable<TResult>> GetAllAsync<TResult>(Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>>? expression = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? order = null,
         params Expression<Func<TEntity, object>>[] includes)
@@ -60,7 +60,7 @@ public class BaseRepository<TKey, TEntity> : IBaseRepository<TKey, TEntity> wher
         return await query.Select(selector).ToListAsync();
     }
 
-    public async Task<IEnumerable<TResult>> GetAllAsync<TResult>(int take,
+    public virtual async Task<IEnumerable<TResult>> GetAllAsync<TResult>(int take,
         Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>>? expression = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? order = null,
@@ -71,7 +71,7 @@ public class BaseRepository<TKey, TEntity> : IBaseRepository<TKey, TEntity> wher
         return await query.Select(selector).Take(take).ToListAsync();
     }
 
-    public async Task<Pagination<TResult>> GetAllAsync<TResult>(int current,
+    public virtual async Task<Pagination<TResult>> GetAllAsync<TResult>(int current,
         int take,
         Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>>? expression = null,
@@ -99,14 +99,14 @@ public class BaseRepository<TKey, TEntity> : IBaseRepository<TKey, TEntity> wher
         return new Pagination<TResult>(items, current, count, take);
     }
 
-    public async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> expression,
+    public virtual async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> expression,
         params Expression<Func<TEntity, object>>[] includes)
     {
         var query = BuildQuery(expression, null, true, false, includes);
         return await query.FirstOrDefaultAsync();
     }
 
-    public async Task<TResult?> GetAsync<TResult>(Expression<Func<TEntity, bool>> expression,
+    public virtual async Task<TResult?> GetAsync<TResult>(Expression<Func<TEntity, bool>> expression,
         Expression<Func<TEntity, TResult>> selector,
         params Expression<Func<TEntity, object>>[] includes)
     {
@@ -114,15 +114,16 @@ public class BaseRepository<TKey, TEntity> : IBaseRepository<TKey, TEntity> wher
         return await query.Select(selector).FirstOrDefaultAsync();
     }
 
-    public async Task<TKey> AddAsync(TEntity entity)
+    public virtual async Task<TEntity> AddAsync(TEntity entity)
     {
         entity.CreateDate = DateTime.UtcNow;
         await Db.AddAsync(entity);
-        return entity.Id;
+        return entity;
     }
 
-    public async Task<IEnumerable<TKey>> AddRangeAsync(IEnumerable<TEntity> entities)
+    public virtual async Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities)
     {
+        // ReSharper disable once PossibleMultipleEnumeration
         var entityList = entities.ToList();
         var now = DateTime.UtcNow;
         foreach (var entity in entityList)
@@ -130,34 +131,35 @@ public class BaseRepository<TKey, TEntity> : IBaseRepository<TKey, TEntity> wher
             entity.CreateDate = now;
         }
         await Db.AddRangeAsync(entityList);
-        return entityList.Select(e => e.Id);
+        // ReSharper disable once PossibleMultipleEnumeration
+        return entities;
     }
 
-    public TKey Update(TEntity entity)
+    public virtual TEntity Update(TEntity entity)
     {
         entity.UpdateDate = DateTime.UtcNow;
         Db.Update(entity);
-        return entity.Id;
+        return entity;
     }
 
-    public void Delete(TEntity entity)
+    public virtual void Delete(TEntity entity)
     {
         entity.IsDeleted = true;
         Update(entity);
     }
 
-    public void DeletePermanently(TEntity entity)
+    public virtual void DeletePermanently(TEntity entity)
     {
         Db.Remove(entity);
     }
 
-    public async Task<int> CountAsync(Expression<Func<TEntity, bool>>? expression = null)
+    public virtual async Task<int> CountAsync(Expression<Func<TEntity, bool>>? expression = null)
     {
         var query = BuildQuery(expression);
         return await query.CountAsync();
     }
 
-    public async Task<bool> IsExistAsync(Expression<Func<TEntity, bool>>? expression = null)
+    public virtual async Task<bool> IsExistAsync(Expression<Func<TEntity, bool>>? expression = null)
     {
         var query = BuildQuery(expression);
         return await query.AnyAsync();
