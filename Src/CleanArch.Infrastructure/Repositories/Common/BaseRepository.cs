@@ -124,7 +124,7 @@ public class BaseRepository<TKey, TEntity> : IBaseRepository<TKey, TEntity> wher
     public async Task<IEnumerable<TKey>> AddRangeAsync(IEnumerable<TEntity> entities)
     {
         var entityList = entities.ToList();
-        var now = DateTime.Now;
+        var now = DateTime.UtcNow;
         foreach (var entity in entityList)
         {
             entity.CreateDate = now;
