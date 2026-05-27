@@ -2,7 +2,6 @@
   <Folder Name="/Src/">
     <Project Path="Src/CleanArch.Api/CleanArch.Api.csproj" Id="744241eb-d71c-4f50-953b-cc70919a5571" />
     <Project Path="Src/CleanArch.Application/CleanArch.Application.csproj" Id="820f3c9b-c5a7-4359-af2e-49fc104171e5" />
-    <Project Path="Src/CleanArch.Contracts/CleanArch.Contracts.csproj" Id="42ddbb7a-355b-4559-a6c2-bbe915d8b5c3" />
     <Project Path="Src/CleanArch.Core/CleanArch.Core.csproj" Id="bf43e29c-34c2-46e5-868c-0876a6280671" />
     <Project Path="Src/CleanArch.Infrastructure/CleanArch.Infrastructure.csproj" Id="116e540e-bb55-473d-bdc2-1f841dc4acbc" />
   </Folder>
