@@ -1,3 +1,4 @@
+using CleanArch.Api.ExceptionHandling;
 using CleanArch.Application;
 using CleanArch.Infrastructure;
 using Scalar.AspNetCore;
@@ -9,6 +10,9 @@ var configuration = builder.Configuration;
 services.AddControllers();
 services.AddInfrastructure(configuration);
 services.AddApplication();
+services.AddExceptionHandler<ValidationExceptionHandler>();
+services.AddExceptionHandler<GlobalExceptionHandler>();
+services.AddProblemDetails();
 services.AddOpenApi();
 
 services.AddApiVersioning(options =>
@@ -34,10 +38,8 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
+app.UseExceptionHandler();
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

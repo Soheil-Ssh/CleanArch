@@ -1,1 +1,9 @@
 ﻿global using Asp.Versioning;
+global using CleanArch.Api.Controllers.Base;
+global using MediatR;
+global using Microsoft.AspNetCore.Mvc;
+global using AutoMapper;
+global using CleanArch.Api.Common.Extensions;
+global using CleanArch.Api.Contracts.Common;
+global using CleanArch.Core.Abstractions.Error;
+global using CleanArch.Core.Abstractions.Result;
