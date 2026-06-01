@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using CleanArch.Application.Behaviors;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CleanArch.Application;
@@ -16,6 +17,9 @@ public static class DependenciesContainer
 
         // add Fluent validation
         services.AddValidatorsFromAssembly(typeof(DependenciesContainer).Assembly);
+
+        // add Validation behavior
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
         return services;
     }

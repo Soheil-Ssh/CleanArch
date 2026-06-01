@@ -7,9 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstractions\Errors\ToDo\" />
-    <Folder Include="Contracts\ToDo\Responses\" />
-    <Folder Include="Contracts\ToDo\Requests\" />
     <Folder Include="Features\ToDo\Commands\EditToDo\" />
     <Folder Include="Features\ToDo\Commands\MarkAsComplete\" />
     <Folder Include="Mappers\" />
